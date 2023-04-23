@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMPDF\CMPDF.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
+  </ItemGroup>
+  <ItemGroup>      
+    <None Include="README.md" Pack="true" PackagePath="\" />        
+  </ItemGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackAsTool>true</PackAsTool>
+    <ToolCommandName>ccpdf</ToolCommandName>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageId>CCPDF</PackageId>
+    <Version>0.1.0</Version>
+    <PackageTags>pdf;resizeImage;reduceSize</PackageTags>
+    <PackageProjectUrl>https://github.com/airmanxtw/CCPDF</PackageProjectUrl>
+    <PackageDescription>CMPDF-based commands,in order to compress the pdf size</PackageDescription>
+    <Authors>airmanx</Authors>
+    <Company>STUST</Company>
+  </PropertyGroup>
+
+</Project>
