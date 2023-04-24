@@ -1,0 +1,5 @@
+enum CCPDFTYPE
+{
+    compress,
+    resize
+}
