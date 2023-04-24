@@ -11,9 +11,10 @@
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/bin/Debug/net6.0/CCPDF.dll",
-            "args": ["compress","--file","/Applications/Projects/pdffiles/demo1.pdf","--outputFile","/Applications/Projects/pdffiles/800.pdf"],
+            //"args": ["compress","--file","/Applications/Projects/pdffiles/demo1.pdf","--outputFile","/Applications/Projects/pdffiles/800.pdf"],
             //"args": ["compress","--file","/Applications/Projects/pdffiles/demo1.pdf"],
-            //"args": ["compress","--help"],
+            "args": ["resize","--file","c:/temp/6174186a-cb1e-4e95-b7ca-63915743d415.TIF","--outputFile","c:/temp/result.TIF","--maxWidth","1600"],
+            //"args": ["--help"],
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
