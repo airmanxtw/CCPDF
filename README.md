@@ -19,3 +19,10 @@ ccpdf --help
 ```shell
 ccpdf compress --file test.pdf --outputFile test_500.pdf --maxWidth 500
 ```
+
+## Or use the forfiles command
+```shell
+forfiles /m *.pdf /d -365 /c "cmd /c ccpdf compress --file @file" /s
+```
+
+
