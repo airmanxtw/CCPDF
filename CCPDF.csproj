@@ -21,7 +21,7 @@
     <ToolCommandName>ccpdf</ToolCommandName>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>CCPDF</PackageId>
-    <Version>0.2.1</Version>
+    <Version>0.3.0</Version>
     <PackageTags>pdf;resizeImage;reduceSize</PackageTags>
     <PackageProjectUrl>https://github.com/airmanxtw/CCPDF</PackageProjectUrl>
     <PackageDescription>CMPDF-based commands,in order to compress the pdf file</PackageDescription>
