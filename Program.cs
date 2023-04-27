@@ -48,35 +48,11 @@ reimgCommand.SetHandler((file, maxWidth, outputFile) =>
     fileOption, widthOption, outputOption);
 
 static void process(FileInfo file, int maxWidth, FileInfo? outputFile, CCPDFTYPE cmd)
-{
-    CMPDF.PDF pdf = new CMPDF.PDF();
+{    
     Console.WriteLine($"Processing {file.Name}, please wait....");
-    var fileBytes = File.ReadAllBytes(file.FullName);
-    var oriSize = fileBytes.Length;
-    byte[] newBytes;
-
-    if (cmd == CCPDFTYPE.compress)
-        newBytes = pdf.compression(fileBytes, maxWidth);
-    else
-        newBytes = pdf.ResizeImage(fileBytes, maxWidth, false);
-
-    var newSize = newBytes.Length;
-    if (outputFile != null)
-    {
-        File.WriteAllBytes(outputFile.FullName, newBytes);
-        Console.WriteLine($"Write {outputFile.Name} completed {efficiency(oriSize, newSize)}");
-    }
-    else
-    {
-        File.WriteAllBytes(file.FullName, newBytes);
-        Console.WriteLine($"Overwrite {file.Name} completed {efficiency(oriSize, newSize)}");
-    }
-}
-
-
-static string efficiency(int ori, int com)
-{
-    return $"[{(int)(((double)(ori - com) / ori) * 100)}%]";
+    BaseResizer resizer = cmd == CCPDFTYPE.compress ? new PdfResizer(file,outputFile) : new ImgResizer(file,outputFile);
+    byte[] newBytes = resizer.resize(maxWidth);
+    resizer.writeFile(newBytes); 
 }
 
 return await rootCommand.InvokeAsync(args);
