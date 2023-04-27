@@ -1,5 +1,10 @@
 ## CMPDF-based commands,in order to compress the pdf size
 
+##install
+```
+dotnet tool install --global CCPDF --version 0.3.0
+```
+
 ## example
 
 ```
