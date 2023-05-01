@@ -5,6 +5,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="NeoSmart.PrettySize" Version="3.1.1" />
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
     <PackageReference Include="System.Text.Encoding.CodePages" Version="7.0.0" />
   </ItemGroup>
@@ -22,7 +23,7 @@
     <ToolCommandName>ccpdf</ToolCommandName>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageId>CCPDF</PackageId>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
     <PackageTags>pdf;resizeImage;reduceSize</PackageTags>
     <PackageProjectUrl>https://github.com/airmanxtw/CCPDF</PackageProjectUrl>
     <PackageDescription>CMPDF-based commands,in order to compress the pdf file</PackageDescription>
