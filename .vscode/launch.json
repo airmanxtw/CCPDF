@@ -14,8 +14,8 @@
             //"args": ["compress","--file","/Applications/Projects/pdffiles/demo1.pdf","--outputFile","/Applications/Projects/pdffiles/800.pdf"],
             //"args": ["compress","--file","/Applications/Projects/pdffiles/demo1.pdf"],
             //"args": ["resize","--file","c:/temp/6174186a-cb1e-4e95-b7ca-63915743d415.TIF","--outputFile","c:/temp/result0427.TIF","--maxWidth","1600"],
-            "args": ["rezip","--file","c:/test/test.zip","--outputFile","c:/test/test_800.zip","--maxWidth","800"],
-            //"args": ["--help"],
+            "args": ["rezip","--file","c:/test/test6.zip","--outputFile","c:/test/test6_800.zip","--maxWidth","800","--noPrompt"],
+            //"args": ["compress","--help"],
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",

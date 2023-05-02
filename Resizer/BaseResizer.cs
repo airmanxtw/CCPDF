@@ -1,4 +1,5 @@
 using NeoSmart.PrettySize;
+
 public abstract class BaseResizer
 {
     protected CMPDF.PDF pdf = new CMPDF.PDF();
@@ -16,8 +17,9 @@ public abstract class BaseResizer
     {
         if (newFile.Length < _oriFileBytes.Length)
         {
-            var newSize = PrettySize.Megabytes(newFile.Length);
-            var oriSize = PrettySize.Megabytes(_oriFileBytes.Length);
+            var newSize = (new PrettySize(newFile.Length)).Format(UnitBase.Base10,UnitStyle.Smart);
+            var oriSize = (new PrettySize(_oriFileBytes.Length)).Format(UnitBase.Base10,UnitStyle.Smart);            
+            
             string? toWrite;
             if (Prompt)
             {
@@ -51,8 +53,8 @@ public abstract class BaseResizer
 
     private string efficiency(int ori, int com)
     {
-        var newSize = PrettySize.Megabytes(com);
-        var oriSize = PrettySize.Megabytes(ori);
+        var newSize = (new PrettySize(com)).Format(UnitBase.Base10,UnitStyle.Smart);
+        var oriSize = (new PrettySize(ori)).Format(UnitBase.Base10,UnitStyle.Smart);
         return $"[{newSize}/{oriSize}] [{(int)(((double)(ori - com) / ori) * 100)}%]";
     }
 
