@@ -2,7 +2,7 @@
 
 ## install
 ```shell
-dotnet tool install --global CCPDF --version 0.4.2
+dotnet tool install --global CCPDF --version 0.4.3
 ```
 ## uninstall
 ```shell
