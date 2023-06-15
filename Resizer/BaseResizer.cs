@@ -1,24 +1,24 @@
 using NeoSmart.PrettySize;
-
+namespace Resizer;
 public abstract class BaseResizer
 {
-    protected CMPDF.PDF pdf = new CMPDF.PDF();
+    protected CMPDF.PDF pdf = new();
     protected byte[] _oriFileBytes;
     protected string _oriFileName;
     protected FileInfo? _outputFile;
     protected BaseResizer(FileInfo oriFile, FileInfo? outputFile)
-    {
+    {                
         _oriFileBytes = File.ReadAllBytes(oriFile.FullName);
         _oriFileName = oriFile.FullName;
         _outputFile = outputFile;
     }
-    abstract public byte[] resize(int maxWidth = 800);
-    public void writeFile(byte[] newFile, bool Prompt)
+    abstract public byte[] Resize(int maxWidth = 800);
+    public void WriteFile(byte[] newFile, bool Prompt)
     {
         if (newFile.Length < _oriFileBytes.Length)
         {
             var newSize = (new PrettySize(newFile.Length)).Format(UnitBase.Base10,UnitStyle.Smart);
-            var oriSize = (new PrettySize(_oriFileBytes.Length)).Format(UnitBase.Base10,UnitStyle.Smart);            
+            //var oriSize = (new PrettySize(_oriFileBytes.Length)).Format(UnitBase.Base10,UnitStyle.Smart);            
             
             string? toWrite;
             if (Prompt)
@@ -36,7 +36,7 @@ public abstract class BaseResizer
                 Console.WriteLine(string.Format("{0} {1} completed {2}",
                 _outputFile != null ? "Write" : "Overwrite",
                 _outputFile != null ? _outputFile.Name : Path.GetFileName(_oriFileName),
-                efficiency(_oriFileBytes.Length, newFile.Length))
+                Efficiency(_oriFileBytes.Length, newFile.Length))
                 );
             }
             else
@@ -51,11 +51,11 @@ public abstract class BaseResizer
         }
     }
 
-    private string efficiency(int ori, int com)
+    private static string Efficiency(int ori, int com)
     {
-        var newSize = (new PrettySize(com)).Format(UnitBase.Base10,UnitStyle.Smart);
-        var oriSize = (new PrettySize(ori)).Format(UnitBase.Base10,UnitStyle.Smart);
-        return $"[{newSize}/{oriSize}] [{(int)(((double)(ori - com) / ori) * 100)}%]";
+        var newSize = new PrettySize(com).Format(UnitBase.Base10,UnitStyle.Smart);
+        var oriSize = new PrettySize(ori).Format(UnitBase.Base10,UnitStyle.Smart);
+        return $"[{newSize}/{oriSize}] [{(int)((double)(ori - com) / ori * 100)}%]";
     }
 
 }

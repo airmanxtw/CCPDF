@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using System.CommandLine;
+using Resizer;
 
 var fileOption = new Option<FileInfo>(
             name: "--file",
@@ -46,11 +47,19 @@ var rezipCommand = new Command("rezip", "resize image files or pdf files in zip 
         outputOption,
         noPromptOption,
     };
+var rerarCommand = new Command("rerar", "resize image files or pdf files in rar file")
+    {
+        fileOption,
+        widthOption,
+        outputOption,
+        noPromptOption,
+    };
 
 
 rootCommand.AddCommand(compCommand);
 rootCommand.AddCommand(reimgCommand);
 rootCommand.AddCommand(rezipCommand);
+rootCommand.AddCommand(rerarCommand);
 
 compCommand.SetHandler((file, maxWidth, outputFile, noPrompt) =>
     {
@@ -70,13 +79,22 @@ rezipCommand.SetHandler((file, maxWidth, outputFile, noPrompt) =>
     },
     fileOption, widthOption, outputOption, noPromptOption);
 
-static void process(FileInfo file, int maxWidth, FileInfo? outputFile, Boolean noPrompt, CCPDFTYPE cmd)
+rezipCommand.SetHandler((file, maxWidth, outputFile, noPrompt) =>
+    {
+        process(file, maxWidth, outputFile, noPrompt ?? false, CCPDFTYPE.rerar);
+    },
+    fileOption, widthOption, outputOption, noPromptOption);
+
+
+
+static void process(FileInfo file, int maxWidth, FileInfo? outputFile, bool noPrompt, CCPDFTYPE cmd)
 {
     Console.WriteLine($"Processing {file.Name}, please wait....");
     BaseResizer resizer = cmd == CCPDFTYPE.compress ? new PdfResizer(file, outputFile) :
-                          cmd == CCPDFTYPE.resize ? new ImgResizer(file, outputFile) : new ZipResizer(file, outputFile);
-    byte[] newBytes = resizer.resize(maxWidth);
-    resizer.writeFile(newBytes, !noPrompt);
+                          cmd == CCPDFTYPE.resize ? new ImgResizer(file, outputFile) :
+                          cmd == CCPDFTYPE.rerar ? new RarResizer(file, outputFile) : new ZipResizer(file, outputFile);
+    byte[] newBytes = resizer.Resize(maxWidth);
+    resizer.WriteFile(newBytes, !noPrompt);
 }
 
 return await rootCommand.InvokeAsync(args);

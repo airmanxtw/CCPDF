@@ -2,5 +2,6 @@ enum CCPDFTYPE
 {
     compress,
     resize,
-    rezip
+    rezip,
+    rerar
 }
