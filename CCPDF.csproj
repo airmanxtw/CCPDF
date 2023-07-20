@@ -28,6 +28,9 @@
     <PackageDescription>CMPDF-based commands,in order to compress the pdf file</PackageDescription>
     <Authors>airmanx</Authors>
     <Company>STUST</Company>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    <RunAnalyzers>false</RunAnalyzers>
   </PropertyGroup>
 
 </Project>

@@ -5,7 +5,7 @@ public class PdfResizer : BaseResizer
 
     public override byte[] Resize(int maxWidth)
     {
-        return pdf.compression(_oriFileBytes, maxWidth);
+        return pdf.Compression(_oriFileBytes, maxWidth);
     }
 
 }

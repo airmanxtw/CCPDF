@@ -5,6 +5,6 @@ public class RarResizer : BaseResizer
 
     public override byte[] Resize(int maxWidth = 800)
     {                                                             
-        return pdf.resizeRar(_oriFileBytes,maxWidth);
+        return pdf.ResizeRar(_oriFileBytes,maxWidth);
     }
 }

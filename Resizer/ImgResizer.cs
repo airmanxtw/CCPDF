@@ -6,7 +6,7 @@ public class ImgResizer : BaseResizer
 
 
     public override byte[] Resize(int maxWidth)
-    {
+    {        
         return pdf.ResizeImage(_oriFileBytes, maxWidth, false);
     }
 }

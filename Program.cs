@@ -79,7 +79,7 @@ rezipCommand.SetHandler((file, maxWidth, outputFile, noPrompt) =>
     },
     fileOption, widthOption, outputOption, noPromptOption);
 
-rezipCommand.SetHandler((file, maxWidth, outputFile, noPrompt) =>
+rerarCommand.SetHandler((file, maxWidth, outputFile, noPrompt) =>
     {
         process(file, maxWidth, outputFile, noPrompt ?? false, CCPDFTYPE.rerar);
     },

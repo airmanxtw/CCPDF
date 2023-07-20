@@ -2,12 +2,12 @@ using NeoSmart.PrettySize;
 namespace Resizer;
 public abstract class BaseResizer
 {
-    protected CMPDF.PDF pdf = new();
+    protected CMPDF.PDF pdf = new CMPDF.PDF();
     protected byte[] _oriFileBytes;
     protected string _oriFileName;
     protected FileInfo? _outputFile;
     protected BaseResizer(FileInfo oriFile, FileInfo? outputFile)
-    {                
+    {                                                                
         _oriFileBytes = File.ReadAllBytes(oriFile.FullName);
         _oriFileName = oriFile.FullName;
         _outputFile = outputFile;
